@@ -1,1 +1,1 @@
-(provide 'gligan-themes)
+(define-package "gligan-themes" "0.1")
