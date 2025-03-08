@@ -1,0 +1,29 @@
+#+title: Gligan's Emacs Themes
+
+This is a collection of all the Emacs themes I have created.
+
+https://gligan.net/emacs-themes
+
+** Installation
+
+With Emacs 30 or higher, you can directly pull the files from this
+repository:
+
+#+begin_src elisp
+(use-package gligan-themes
+  :vc (:url "https://github.com/raegnald/gligan-emacs-themes"
+       :branch "main"))
+#+end_src
+
+Otherwise, just clone this repo into your Emacs folder.
+
+** Themes
+*** Ellas
+[[https://gligan.net/ellas.png]]
+*** Somnus
+[[https://gligan.net/somnus.png]]
+*** Cappuccino noir
+[[https://gligan.net/cappuccino-noir.png]]
+*** Monokate
+(from Colorsublime)
+[[https://gligan.net/monokate.png]]
