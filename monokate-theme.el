@@ -80,7 +80,7 @@
                           '(hl-line ((t (:inherit nil :extend t))))
 
                           '(italic ((t (:slant italic :underline nil))))
-                          
+
                           ;; Matches
                           '(match ((t nil)))
                           '(show-paren-match ((t (:inverse-video t))))
@@ -90,7 +90,7 @@
                           `(custom-button ((t (:foreground ,sylvan :box (:line-width 3 :style ,sylvan) :height 0.9 ))))
                           `(custom-button-mouse ((t (:foreground ,white-fg :box (:line-width 3 :style ,white-fg) :height 0.9 ))))
                           `(custom-button-mouse ((t (:foreground ,white-fg :box (:line-width 3 :style ,white-fg) :height 0.9 ))))
-                          
+
                           ;; Org mode
                           `(org-code ((t (:foreground ,autumn-yellow ))))
                           `(org-verbatim ((t (:foreground ,sylvan ))))
@@ -98,13 +98,6 @@
                           ;; Key cast package
                           `(keycast-key ((t (:box nil :foreground ,white-fg :background ,grey-3 ))))
                           )
-
-;;;###autoload
-  (and load-file-name
-       (boundp 'custom-theme-load-path)
-       (add-to-list 'custom-theme-load-path
-                    (file-name-as-directory
-                     (file-name-directory load-file-name))))
 
   (provide-theme 'monokate))
 
