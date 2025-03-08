@@ -49,7 +49,7 @@
    (buffer-name . main-fg)
 
    (background-accent-strong . modeline-bg)
-   (background-accent-medium . modeline-bg-inactive)
+   (background-accent-medium . modeline-bg)
    (background-accent-light  . modeline-bg-inactive)
 
    (accent-strong . keyword-yellow)
