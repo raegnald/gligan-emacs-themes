@@ -182,7 +182,8 @@
     (intern (completing-read "Theme: " (gligan/themes)))))
 
   (unless dont-disable-rest
-    (mapcar #'disable-theme custom-enabled-themes))
+    (dolist (enabled-theme custom-enabled-themes)
+      (disable-theme enabled-theme)))
 
   (load-theme theme t)
 
