@@ -175,6 +175,7 @@
 (defun gligan/themes ()
   (append gligan/light-themes gligan/dark-themes))
 
+;;;###autoload
 (defun gligan/set-theme (theme &optional dont-disable-rest)
   (interactive
    (list
