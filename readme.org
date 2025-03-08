@@ -24,6 +24,3 @@ Otherwise, just clone this repo into your Emacs folder.
 [[https://gligan.net/somnus.png]]
 *** Cappuccino noir
 [[https://gligan.net/cappuccino-noir.png]]
-*** Monokate
-(from Colorsublime)
-[[https://gligan.net/monokate.png]]

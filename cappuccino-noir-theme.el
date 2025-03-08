@@ -2,143 +2,98 @@
 ;;; Version: 1.0
 ;;; Commentary:
 ;;; A night theme that feels like morning cup of coffee.
+;;;
+;;; This theme is a reimplementation of the original Cappuccino Noir
+;;; theme using the tools provided by `gligan-themes.el'.
+;;;
 ;;; Code:
 
-(let ((main-bg              "#170e0b")
-      (main-fg              "#e4c3ab")
-      (contrast-fg          "#f1daca")
+(require 'gligan-themes)
 
-      (cappu-1  "#25150f")
-      (cappu-2  "#351e17")
-      (cappu-3  "#482c22")
-      (cappu-4  "#633f33")
-      (cappu-5  "#956758")
+(define-gligan-palette cappuccino-noir-palette
+  ;; The palette colours
+  ((main-bg         . "#170e0b")
+   (main-fg         . "#e4c3ab")
+   (contrast-fg     . "#f1daca")
 
-      (c1 "#DDB680")
-      (c2 "#f59c20")
-      (c3 "#F5AA73")
-      (c4 "#C8DAD6")
-      (c5 "#c1d2e2")
-      (c6 "#EFB78E")
+   (cappu-1         . "#25150f")
+   (cappu-2         . "#351e17")
+   (cappu-3         . "#482c22")
+   (cappu-4         . "#633f33")
+   (cappu-5         . "#956758")
 
-      (ceramic "#fcfff9")
-      (youthful-coral "#ec7e70")
-      (blue-rice "#96b9ea")
-      (cool-cyan "#7DDBD0")
-      (ethereal-green "#cbc8b1")
+   (c1              . "#ddb680")
+   (c2              . "#f59c20")
+   (c3              . "#f5aa73")
+   (c4              . "#c8dad6")
+   (c5              . "#c1d2e2")
+   (c6              . "#efb78e")
 
-      (modeline-padding 6))
+   (ceramic         . "#fcfff9")
+   (youthful-coral  . "#ec7e70")
+   (blue-rice       . "#96b9ea")
+   (cool-cyan       . "#7ddbd0")
+   (ethereal-green  . "#cbc8b1"))
 
-  (deftheme cappuccino-noir
-    "A night theme that feels like morning cup of coffee.")
+  ;; The palette associations
+  ((background . main-bg)
+   (foreground . main-fg)
 
-  (custom-theme-set-faces
-   'cappuccino-noir
+   (cursor . main-fg)
+   (region . cappu-3)
+   (fringe . main-bg)
 
-   `(default ((t (:foreground ,main-fg :background ,main-bg ))))
-   `(cursor ((t (:background ,main-fg ))))
+   ;; (background-accent-strong . )
+   (background-accent-medium . cappu-3)
+   (background-accent-light  . cappu-2)
 
-   `(region ((t (:background ,cappu-3 ))))
+   (accent-strong . contrast-fg)
+   (accent-medium . contrast-fg)
 
-   `(ansi-color-black ((t (:foreground ,cappu-1 :background ,cappu-1))))
-   `(ansi-color-red ((t (:foregrund ,youthful-coral :background ,youthful-coral))))
-   `(ansi-color-green ((t (:foreground ,ethereal-green :background ,ethereal-green))))
-   `(ansi-color-yellow ((t (:foreground ,c1 :background ,c1))))
-   `(ansi-color-blue ((t (:foreground ,blue-rice :background ,blue-rice))))
-   ;; `(ansi-color-magenta ((t (:foreground ,cotton-candy :background ,cotton-candy))))
-   `(ansi-color-cyan ((t (:foreground ,cool-cyan :background ,cool-cyan))))
-   `(ansi-color-white ((t (:foreground ,ceramic :background ,ceramic))))
+   (grey-neutral . cappu-4)
+   (grey-accent  . cappu-5)
 
-   `(success ((t (:foreground ,ethereal-green :weight bold))))
-   `(warning ((t (:foreground ,youthful-coral :weight bold))))
+   (line-number             . cappu-4)
+   (current-line-number     . cappu-5)
+   (current-line-background . cappu-1)
 
-   `(line-number ((t (:inherit default :foreground ,cappu-4 ))))
-   `(line-number-current-line ((t (:inherit default :foreground ,cappu-5 ))))
+   (white   . ceramic)
+   (black   . cappu-1)
+   (red     . youthful-coral)
+   (green   . ethereal-green)
+   (yellow  . c1)
+   (blue    . blue-rice)
+   (magenta . "#ff00ff")
+   (cyan    . cool-cyan)
 
-   `(highlight ((t (:background ,cappu-3 ))))
-   `(secondary-selection ((t (:background ,cappu-4 ))))
+   (success . ethereal-green)
+   (warning . youthful-coral)
 
-   `(fringe ((t (:background ,main-bg))))
+   (built-in            . c4)
+   (preprocessor        . ethereal-green)
+   (comment             . cappu-5)
+   (comment-delimiter   . cappu-4)
+   (comment-doc         . c6)
+   ;; (comment-doc-markup  . )
+   ;; (punctuation         . )
+   (type                . c1)
+   (function-name       . c2)
+   (variable-name       . c3)
+   (keyword             . youthful-coral)
+   (string              . c5)
+   ;; (escaped-char        . )
+   (negation            . youthful-coral)
+   (number              . ethereal-green)
+   (constant            . ethereal-green)
+   ;; (regexp              . )
+   (stand-out           . youthful-coral)
+   (trailing-whitespace . youthful-coral)
 
-   `(mode-line ((t (:foreground ,main-fg :background ,cappu-3
-                    :box (:line-width ,modeline-padding :color ,cappu-3 :style nil) ))))
-   `(mode-line-inactive ((t (:background ,cappu-2
-                             :box (:line-width ,modeline-padding :color ,cappu-2 :style nil)))))
-   `(mode-line-buffer-id ((t (:bold t :foreground ,contrast-fg ))))
+   (minibuffer-prompt . c1)))
 
-   `(vertical-border ((t (:foreground ,cappu-2 ))))
-
-   `(trailing-whitespace ((t (:background ,youthful-coral ))))
-
-   `(font-lock-builtin-face ((t (:foreground ,c4 ))))
-   `(font-lock-preprocessor-face ((t (:foreground ,ethereal-green :bold t ))))
-   `(font-lock-comment-face ((t (:foreground ,cappu-5 :slant italic ))))
-   `(font-lock-comment-delimiter-face ((t (:foreground ,cappu-4 :slant italic ))))
-   `(font-lock-doc-face ((t (:foreground ,c6 ))))
-   ;; `(font-lock-doc-markup-face ((t (:foreground ,light-violet ))))
-   ;; `(font-lock-punctuation-face ((t (:foreground ,main-fg ))))
-   ;; `(font-lock-delimiter-face ((t (:foreground ,main-fg ))))
-   `(font-lock-type-face ((t (:foreground ,c1 ))))
-   `(font-lock-function-name-face ((t (:foreground ,c2 ))))
-   `(font-lock-variable-name-face ((t (:foreground ,c3 ))))
-   `(font-lock-keyword-face ((t (:foreground ,youthful-coral ))))
-   `(font-lock-string-face ((t (:foreground ,c5 ))))
-   ;; `(font-lock-escape-face ((t (:foreground ,old-green-wall ))))
-   `(font-lock-negation-char-face ((t (:foreground ,youthful-coral ))))
-   `(font-lock-number-face ((t (:foreground ,ethereal-green ))))
-   `(font-lock-constant-face ((t (:foreground ,ethereal-green ))))
-   ;; `(font-lock-regexp-face ((t (:foreground ,cotton-candy ))))
-   `(font-lock-warning-face ((t (:foreground ,youthful-coral :bold t ))))
-
-   `(minibuffer-prompt ((t (:foreground ,c1 :bold t ))))
-   `(hl-line ((t (:background ,cappu-1 ))))
-
-   '(italic ((t (:slant italic :underline nil))))
-
-   ;; Matches
-   '(match ((t nil)))
-   '(show-paren-match ((t (:inverse-video t))))
-
-   ;; Clickable elements
-   `(link ((t (:foreground ,cool-cyan :underline t ))))
-   `(custom-button ((t (:foreground ,c3 :box (:line-width 2) :height 0.9 ))))
-   `(custom-button-mouse ((t (:foreground ,cool-cyan :box (:line-width 2) :height 0.9 ))))
-
-   ;; ;; Dired mode
-   ;; `(dired-header ((t (:foreground ,keyword-yellow ))))
-   `(dired-broken-symlink ((t (:foreground ,youthful-coral :inverse-video t ))))
-
-   ;; ;; Org mode
-   ;; `(org-code ((t (:foreground ,modern-blue ))))
-   ;; `(org-verbatim ((t (:foreground ,modern-blue ))))
-   ;; `(org-block ((t (:background ,subtle-difference ))))
-
-   `(org-todo ((t (:foreground ,youthful-coral ))))
-   `(org-done ((t (:foreground ,ethereal-green ))))
-
-   ;; ;; Org agenda
-   ;; `(org-agenda-date ((t (:inherit nil :foreground ,modern-blue :height 1.4 ))))
-   ;; `(org-agenda-date-today ((t (:inherit nil :underline t :foreground ,modern-blue ))))
-   ;; `(org-agenda-diary ((t (:foreground ,old-green-wall ))))
-
-   ;; Eshell
-   `(eshell-prompt ((t (:foreground ,blue-rice :bold t ))))
-
-   ;; ;; Key cast package
-   ;; `(keycast-key ((t (:box nil :foreground ,main-bg :background ,champagne ))))
-
-   ;; ;; Tab bars
-   `(tab-bar ((t (:background ,main-bg :foreground ,main-fg
-                  ;; :underline ,modeline-bg
-                  :height 1.0))))
-   `(tab-bar-tab ((t (:background ,cappu-3 :box ,cappu-3 ))))
-   `(tab-bar-tab-inactive ((t (:background ,cappu-1 :box ,cappu-1 ))))
-
-   ;; Eglot
-   `(eglot-highlight-symbol-face ((t (:inherit t :background ,cappu-4 ))))
-
-   )
-
-  (provide-theme 'cappuccino-noir))
+(define-gligan-theme cappuccino-noir
+  dark
+  cappuccino-noir-palette
+  "A night theme that feels like morning cup of coffee")
 
 ;;; cappuccino-noir-theme.el ends here
