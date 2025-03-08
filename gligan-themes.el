@@ -10,9 +10,13 @@
   "Amount of pixels to apply as padding to the modeline."
   :group 'gligan-themes)
 
+(defcustom gligan/spacious-frame t
+  "Whether or not to apply extra margin to the Emacs frame."
+  :group 'gligan-themes)
 
-(defvar gligan/light-themes nil)
-(defvar gligan/dark-themes nil)
+
+(defvar gligan/light-themes '(ellas))
+(defvar gligan/dark-themes '(cappuccino-noir somnus))
 
 
 (defmacro define-gligan-palette (palette-name
@@ -40,11 +44,6 @@
 
 (defmacro define-gligan-theme (theme-name light-or-dark palette &optional doc)
   (declare (doc-string 4))
-
-  (pcase light-or-dark
-    ('light (push theme-name gligan/light-themes))
-    ('dark  (push theme-name gligan/dark-themes))
-    (_ (error "Invalid theme variant %s" light-or-dark)))
 
   `(progn
      (deftheme ,theme-name ,doc)
@@ -168,6 +167,44 @@
                                             'background-accent-light)))))
       )
      (provide-theme (quote ,theme-name))))
+
+
+(defvar gligan/after-theme-toggle-hook nil
+  "Hook that is run after an Gligan theme has loaded.")
+
+(defun gligan/themes ()
+  (append gligan/light-themes gligan/dark-themes))
+
+(defun gligan/set-theme (theme &optional dont-disable-rest)
+  (interactive
+   (list
+    (intern (completing-read "Theme: " (gligan/themes)))))
+
+  (unless dont-disable-rest
+    (mapcar #'disable-theme custom-enabled-themes))
+
+  (load-theme theme t)
+
+  (run-hooks 'gligan/after-theme-toggle-hook))
+
+(defun gligan/spacious-frame-style-tweaks ()
+  (when gligan/spacious-frame
+    (modify-all-frames-parameters
+     '((internal-border-width . 15)
+       (right-divider-width . 15)
+       (left-fringe . 8)
+       (right-fringe . 8)))
+
+    (let ((bg (face-attribute 'default :background)))
+      (set-face-attribute 'window-divider nil
+                          :foreground bg)
+      (set-face-attribute 'window-divider-first-pixel nil
+                          :foreground bg)
+      (set-face-attribute 'window-divider-last-pixel nil
+                          :foreground bg))))
+
+(add-hook 'gligan/after-theme-toggle-hook
+          'gligan/spacious-frame-style-tweaks)
 
 ;;;###autoload
 (and load-file-name
