@@ -17,6 +17,24 @@ repository:
 
 Otherwise, just clone this repo into your Emacs folder.
 
+** Usage
+
+You can interactively select the theme to apply by doing =M-x
+gligan/set-theme=. This function gives you a list of all Gligan themes.
+Find the one you like most, and then to load it automatically every
+time you open Emacs, add it to your Emacs configuration.
+
+Let's say that you liked the Ellas theme, then you would add:
+
+#+begin_src elisp
+(gligan/set-theme 'ellas)
+#+end_src
+
+Note that the function =gligan/set-theme= can work with any theme --
+even themes that are not part of this collection. Use this function if
+you want other functionality of this package to work, like
+=gligan/spacious-frame= for instance.
+
 ** Themes
 *** Ellas
 [[https://gligan.net/ellas.png]]
