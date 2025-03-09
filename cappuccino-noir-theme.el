@@ -114,8 +114,8 @@
 
 (define-gligan-theme cappuccino-noir
   dark
-  cappuccino-noir-palette
-  "A night theme that feels like morning cup of coffee")
+  'cappuccino-noir-palette
+  "A night theme that feels like morning cup of coffee.")
 
 (provide 'cappuccino-noir-theme)
 

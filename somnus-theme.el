@@ -120,9 +120,10 @@
 
 (define-gligan-theme somnus
   dark
-  somnus-palette
-  "A theme to focus and not to strain your eyes during a late
-night software development session.")
+  'somnus-palette
+  "Relaxing, night-centred theme for Emacs.
+A theme to focus and not to strain your eyes during a late night
+software development session.")
 
 (provide 'somnus-theme)
 
