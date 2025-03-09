@@ -22,6 +22,7 @@
 (defmacro define-gligan-palette (palette-name
                                  palette-colours
                                  palette-associations)
+  (declare (indent defun))
   (let* ((associate-palette-name-with-colour
           (lambda (palette-association)
             (cl-destructuring-bind (name . colour) palette-association
@@ -43,7 +44,7 @@
     colour))
 
 (defmacro define-gligan-theme (theme-name light-or-dark palette &optional doc)
-  (declare (doc-string 4))
+  (declare (indent defun) (doc-string 4))
 
   `(progn
      (deftheme ,theme-name ,doc)
@@ -61,10 +62,10 @@
                                                         'trailing-whitespace
                                                         'red)))))
 
-      '(line-number              ((t (:background ,(--colour palette
+      '(line-number              ((t (:foreground ,(--colour palette
                                                              'line-number
                                                              'grey-neutral)))))
-      '(line-number-current-line ((t (:background ,(--colour palette
+      '(line-number-current-line ((t (:foreground ,(--colour palette
                                                              'current-line-number
                                                              'grey-accent)))))
 
