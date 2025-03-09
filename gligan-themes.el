@@ -31,10 +31,8 @@
 
 ;;; Code:
 
-(provide 'gligan-themes)
-
 (require 'cl-lib)
-
+(require 'custom)
 
 (defgroup gligan-themes ()
   "Options that apply to all themes in the Gligan collection."
@@ -42,11 +40,13 @@
 
 (defcustom gligan/modeline-padding 6
   "Amount of pixels to apply as padding to the modeline."
-  :group 'gligan-themes)
+  :group 'gligan-themes
+  :type 'integer)
 
 (defcustom gligan/spacious-frame t
   "Whether or not to apply extra margin to the Emacs frame."
-  :group 'gligan-themes)
+  :group 'gligan-themes
+  :type 'boolean)
 
 
 (defvar gligan/light-themes '(ellas))
@@ -56,6 +56,10 @@
 (defmacro define-gligan-palette (palette-name
                                  palette-colours
                                  palette-associations)
+  "Define a palette with a given PALETTE-NAME.
+The second argument is an alist of PALETTE-COLOURS in
+the format (name . value). The argument PALETTE-ASSOCIATIONS is
+another alist of colour associations."
   (declare (indent defun))
   (let* ((associate-palette-name-with-colour
           (lambda (palette-association)
@@ -71,14 +75,27 @@
 
 
 (defun --colour (palette &rest names)
-  "Return the first available colour associated with a name."
+  "Return a color from a PALETTE.
+Takes a list of colour NAMES and returns the colour with the
+first matching name."
   (let (colour)
     (while (and (null colour) names)
       (setq colour (alist-get (pop names) (eval palette))))
     colour))
 
 (defmacro define-gligan-theme (theme-name light-or-dark palette &optional doc)
+  "Create a theme given a THEME-NAME and a PALETTE.
+LIGHT-OR-DARK can be either they symbol `light' or `dark'.
+Optionally add a DOC string."
   (declare (indent defun) (doc-string 4))
+
+  ;; Checking that the theme being defined is part of the theme list
+  (let ((correct-theme-list
+         (pcase light-or-dark
+           ('dark  gligan/dark-themes)
+           ('light gligan/light-themes))))
+    (unless (memq theme-name correct-theme-list)
+      (error "%s is not part of the theme list" theme-name)))
 
   `(progn
      (deftheme ,theme-name ,doc)
@@ -208,10 +225,16 @@
   "Hook that is run after an Gligan theme has loaded.")
 
 (defun gligan/themes ()
+  "Get all available themes."
   (append gligan/light-themes gligan/dark-themes))
 
 ;;;###autoload
 (defun gligan/set-theme (theme &optional dont-disable-rest)
+  "Set the current theme to THEME.
+
+By default, this function disables all loaded themes before
+applying the new one. The argument DONT-DISABLE-REST, when non
+nil, inhibits this behaviour."
   (interactive
    (list
     (intern (completing-read "Theme: " (gligan/themes)))))
@@ -225,6 +248,7 @@
   (run-hooks 'gligan/after-theme-toggle-hook))
 
 (defun gligan/spacious-frame-style-tweaks ()
+  "Apply the stylistic tweaks that make the frame sleek."
   (when gligan/spacious-frame
     (modify-all-frames-parameters
      '((internal-border-width . 15)
@@ -249,6 +273,7 @@
      (add-to-list 'custom-theme-load-path
                   (file-name-as-directory
                    (file-name-directory load-file-name))))
+
 
 (provide 'gligan-themes)
 
