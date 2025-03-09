@@ -53,6 +53,8 @@
    (grey-neutral . cappu-4)
    (grey-accent  . cappu-5)
 
+   (link-foreground  . c6)
+
    (line-number             . cappu-4)
    (current-line-number     . cappu-5)
    (current-line-background . cappu-1)
