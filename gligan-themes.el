@@ -16,7 +16,7 @@
 
 
 (defvar gligan/light-themes '(ellas))
-(defvar gligan/dark-themes '(cappuccino-noir somnus))
+(defvar gligan/dark-themes '(cappuccino-noir somnus purpurina))
 
 
 (defmacro define-gligan-palette (palette-name
