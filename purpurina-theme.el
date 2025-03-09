@@ -1,7 +1,27 @@
-;;; purpurina-theme.el --- I'm a star
-;;; Version: 1.0
+;;; purpurina-theme.el --- I'm a star                -*- lexical-binding: t; -*-
+
+;; Copyright (C) 2025  Ronaldo Gligan
+
+;; Author: Ronaldo Gligan <ronaldogligan@gmail.com>
+;; Keywords: faces
+
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
 ;;; Commentary:
-;;; A glamorous theme for your nocturnal needs.
+
+;; A glamorous theme for your nocturnal needs.
+
 ;;; Code:
 
 (require 'gligan-themes)
@@ -97,5 +117,7 @@
   dark
   purpurina-palette
   "A glamorous theme for your nocturnal needs.")
+
+(provide 'purpurina-theme)
 
 ;;; purpurina-theme.el ends here

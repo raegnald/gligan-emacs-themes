@@ -1,3 +1,37 @@
+;;; gligan-themes.el --- The Gligan theme collection  -*- lexical-binding: t; -*-
+
+;; Copyright (C) 2025  Ronaldo Gligan
+
+;; Author: Ronaldo Gligan <ronaldogligan@gmail.com>
+;; Keywords: faces
+
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;;; Commentary:
+
+;; This file contains common functionality used by all the Gligan
+;; themes. It mainly defines two macros: one for creating a palette of
+;; colours and the associations between those colours to the elements
+;; they should correspond to, and another macro for creating a theme
+;; out of that palette (see macros `define-gligan-palette' and
+;; `define-gligan-theme'). On the other hand, it provides extra
+;; customisations for making the Emacs frame and windows more sleek,
+;; by giving them padding.
+
+;;; Code:
+
+(provide 'gligan-themes)
 
 (require 'cl-lib)
 
@@ -217,3 +251,5 @@
                    (file-name-directory load-file-name))))
 
 (provide 'gligan-themes)
+
+;;; gligan-themes.el ends here

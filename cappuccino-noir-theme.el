@@ -1,11 +1,30 @@
-;;; cappuccino-noir-theme.el --- Coffee at night
-;;; Version: 1.0
+;;; cappuccino-noir-theme.el --- Coffee at night     -*- lexical-binding: t; -*-
+
+;; Copyright (C) 2025  Ronaldo Gligan
+
+;; Author: Ronaldo Gligan <ronaldogligan@gmail.com>
+;; Keywords: faces
+
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
 ;;; Commentary:
-;;; A night theme that feels like morning cup of coffee.
-;;;
-;;; This theme is a reimplementation of the original Cappuccino Noir
-;;; theme using the tools provided by `gligan-themes.el'.
-;;;
+
+;; A night theme that feels like morning cup of coffee.
+
+;; This theme is a reimplementation of the original Cappuccino Noir
+;; theme using the tools provided by `gligan-themes.el'.
+
 ;;; Code:
 
 (require 'gligan-themes)
@@ -97,5 +116,7 @@
   dark
   cappuccino-noir-palette
   "A night theme that feels like morning cup of coffee")
+
+(provide 'cappuccino-noir-theme)
 
 ;;; cappuccino-noir-theme.el ends here
