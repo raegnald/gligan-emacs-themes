@@ -71,7 +71,7 @@ another alist of colour associations."
           (mapcar associate-palette-name-with-colour
                   palette-associations)))
 
-    `(defvar ,palette-name (quote ,palette))))
+    `(eval-when-compile (defvar ,palette-name (quote ,palette)))))
 
 
 (defun --colour (palette &rest names)
@@ -80,7 +80,7 @@ Takes a list of colour NAMES and returns the colour with the
 first matching name."
   (let (colour)
     (while (and (null colour) names)
-      (setq colour (alist-get (pop names) palette)))
+      (setq colour (alist-get (pop names) (eval palette))))
     colour))
 
 (defmacro define-gligan-theme (theme-name light-or-dark palette &optional doc)

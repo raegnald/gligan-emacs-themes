@@ -115,7 +115,7 @@
 
 (define-gligan-theme purpurina
   dark
-  'purpurina-palette
+  purpurina-palette
   "A glamorous theme for your nocturnal needs.")
 
 (provide 'purpurina-theme)

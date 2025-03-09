@@ -115,7 +115,7 @@
 
 (define-gligan-theme ellas
   light
-  'ellas-palette
+  ellas-palette
   "A trip to Greece.")
 
 (provide 'ellas-theme)
